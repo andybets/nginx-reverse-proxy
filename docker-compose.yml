@@ -1,0 +1,15 @@
+version: '3'
+services:
+  reverse_proxy:
+    build: ./nginx
+#    env_file:
+#        - ./config/.env
+    networks:
+        - eosio_api_network
+    ports:
+        - "9999:80"
+    restart: on-failure
+
+networks:
+    eosio_api_network:
+        external: true
